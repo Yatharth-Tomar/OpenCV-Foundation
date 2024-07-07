@@ -21,9 +21,15 @@
     <ClCompile Include="Itreating-through-Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MaskOperationOnMatrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Itreating-through-Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MaskOperationOnMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

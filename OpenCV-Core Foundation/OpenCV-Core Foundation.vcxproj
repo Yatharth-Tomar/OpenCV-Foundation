@@ -133,10 +133,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Itreating-through-Image.cpp" />
+    <ClCompile Include="MaskOperationOnMatrix.cpp" />
     <ClCompile Include="OpenCV-Core Foundation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Itreating-through-Image.h" />
+    <ClInclude Include="MaskOperationOnMatrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

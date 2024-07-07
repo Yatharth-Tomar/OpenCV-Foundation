@@ -1,3 +1,9 @@
+/*We can conclude a couple of things. If possible, use the already made functions of OpenCV (instead of reinventing these). The fastest method turns out to be the LUT function. This is because the OpenCV library is multi-thread enabled via Intel Threaded Building Blocks.
+However, if you need to write a simple image scan prefer the pointer method.
+The iterator is a safer bet, however quite slower. Using the on-the-fly reference access method for full image scan is the most costly in debug mode. In the release mode it may beat the iterator approach or not, 
+however it surely sacrifices for this the safety trait of iterators.*/
+
+
 #include "Itreating-through-Image.h"
 
 

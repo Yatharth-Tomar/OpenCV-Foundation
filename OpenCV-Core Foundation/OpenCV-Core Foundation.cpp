@@ -21,6 +21,7 @@ Data Type :
 #include <opencv2/opencv.hpp> 
 #include<iostream>
 #include "Itreating-through-Image.h"
+#include "MaskOperationOnMatrix.h"
 using namespace std;
 using namespace cv;
 
@@ -88,7 +89,7 @@ int main() {
 	cout << Mat(v) << endl;
 
 
-
+	maskUsingFilter2D(A);
 	MatIm(A);
 	//vector of points
 	vector<Point2f> vPoints(20);
