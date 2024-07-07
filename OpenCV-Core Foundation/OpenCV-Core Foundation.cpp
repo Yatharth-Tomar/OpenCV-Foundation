@@ -74,6 +74,28 @@ int main() {
 	Mat S = A(Range::all(), Range(0, 900));
 	//cout << endl << "S = " << S << endl << endl;
 
+	//Output ogother common points
+	Point2f P2f(5, 1);
+	Point3f P3f(2, 6, 7);
+
+	cout << endl << P3f << endl;
+
+	cout << endl;
+
+	vector<int> v(10,0);
+	cout << endl << "Vector " << endl;
+	cout << Mat(v) << endl;
+
+
+
+
+	//vector of points
+	vector<Point2f> vPoints(20);
+	for (size_t i = 0; i < vPoints.size(); ++i)
+		vPoints[i] = Point2f((float)(i * 5), (float)(i % 7));
+	cout << "A vector of 2D Points = " << vPoints << endl << endl;
+
+
 	imshow("row and column",S);
 	waitKey(0);
 
