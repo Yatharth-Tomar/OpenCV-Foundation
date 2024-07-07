@@ -1,6 +1,35 @@
 #include "Itreating-through-Image.h"
 
 
+//Most efficient way - Using core function to create look up table
+
+Mat& usingCoreF(Mat& I, const uchar* const table) {
+	
+	/*This line creates a matrix (Mat object) with 1 row, 256 columns, and type CV_8U (8-bit unsigned integers). 
+	The matrix will hold the lookup table values.*/
+
+	/* OpenCV provides a function for modifying image values, without the need to write the scanning logic of the image.
+	We use the cv::LUT() function of the core module*/
+
+	Mat lookUpTable(1, 256, CV_8U);//normal constructor way
+	uchar* p = lookUpTable.ptr(); //pointer to first element
+
+	for (int i = 0; i < 256; ++i) {
+		p[i] = table[i];//filling look up table
+	}
+	Mat J;
+
+	LUT(I, lookUpTable, J);
+	imshow("J is ", J);
+	waitKey(0);
+
+	return J;
+
+
+
+}
+
+
 /*When a function returns a reference, it means that instead of creating a copy of the object (Mat in this case), it operates directly on the original object passed to it.
 This is efficient for large data structures like images because it avoids unnecessary copying.*/
 
@@ -76,7 +105,9 @@ void MatIm(Mat A) {
 	}
 	Mat cc;
 	A.copyTo(cc);
+	usingCoreF(A, table);
 	ScanImageAndReduceIterator(A, table);
+	
 	imshow("original image is ", cc);
 	imshow("Reduced image ", A);
 	waitKey(0);
