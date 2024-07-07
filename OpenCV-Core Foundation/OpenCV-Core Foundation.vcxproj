@@ -132,7 +132,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Itreating-through-Image.cpp" />
     <ClCompile Include="OpenCV-Core Foundation.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Itreating-through-Image.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

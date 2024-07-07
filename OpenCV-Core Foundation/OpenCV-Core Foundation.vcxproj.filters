@@ -18,5 +18,13 @@
     <ClCompile Include="OpenCV-Core Foundation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Itreating-through-Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Itreating-through-Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

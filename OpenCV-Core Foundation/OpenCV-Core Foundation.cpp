@@ -20,6 +20,7 @@ Data Type :
 
 #include <opencv2/opencv.hpp> 
 #include<iostream>
+#include "Itreating-through-Image.h"
 using namespace std;
 using namespace cv;
 
@@ -88,7 +89,7 @@ int main() {
 
 
 
-
+	MatIm(A);
 	//vector of points
 	vector<Point2f> vPoints(20);
 	for (size_t i = 0; i < vPoints.size(); ++i)
@@ -96,8 +97,8 @@ int main() {
 	cout << "A vector of 2D Points = " << vPoints << endl << endl;
 
 
-	imshow("row and column",S);
-	waitKey(0);
+	//imshow("row and column",S);
+	//waitKey(0);
 
 
 
