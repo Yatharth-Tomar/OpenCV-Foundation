@@ -64,16 +64,16 @@ int main() {
 
 	//Range of Interest 
 
-	Mat X(A, Rect(10, 10, 100, 100));//x,y-10,10  width,height-100,100
+	Mat X(A, Rect(0, 0, 10, 10));//x,y-10,10  width,height-100,100
 	//cout << endl << "X = " << X << endl << endl;
 
 	//we can also use row and column boudaries
 	/*Range(0, 2) specifies the range of columns to be included in S.
-0: The starting column index (inclusive).
-2: The ending column index (exclusive).*/
+	0: The starting column index (inclusive).
+	2: The ending column index (exclusive).*/
 	cout << "Number of rows in image : "<<A.rows<<endl;
 	cout << "NUmber of columns in image are : " << A.cols << endl;
-	Mat S = A(Range::all(), Range(0, 900));
+	Mat S = A(Range::all(), Range(0, 200));
 	//cout << endl << "S = " << S << endl << endl;
 
 	//Output ogother common points
@@ -89,8 +89,26 @@ int main() {
 	cout << Mat(v) << endl;
 
 
-	maskUsingFilter2D(A);
-	MatIm(A);
+	//accessing the intensity of pixel in an image
+	double intensity = E.at<double>(Point(1, 1));
+	cout << "Intensity is " << intensity << endl;
+
+
+	//accessing intensity value in case of BGR channel
+
+	Vec3b listt = A.at<Vec3b>(Point(0, 0));
+	uchar blue = listt[0];
+	uchar green = listt[1];
+	uchar red = listt[2];
+
+	cout << "Number of channels in listt is " << A.channels() << endl;
+	cout << "BGR " << (int)blue << " " << (int)green << " " << (int)red << endl;
+
+	cout << endl << X << endl << endl;
+
+	//cout << "Mat type is " << E.type() << endl;
+	//maskUsingFilter2D(A);
+	//MatIm(A);
 	//vector of points
 	vector<Point2f> vPoints(20);
 	for (size_t i = 0; i < vPoints.size(); ++i)
