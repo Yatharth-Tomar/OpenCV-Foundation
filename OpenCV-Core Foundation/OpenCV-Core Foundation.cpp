@@ -22,6 +22,7 @@ Data Type :
 #include<iostream>
 #include "Itreating-through-Image.h"
 #include "MaskOperationOnMatrix.h"
+#include "TemplateMatching.h"
 using namespace std;
 using namespace cv;
 
@@ -106,14 +107,61 @@ int main() {
 
 	cout << endl << X << endl << endl;
 
-	//cout << "Mat type is " << E.type() << endl;
+	cout << "Mat type is " << E.type() << endl;
 	//maskUsingFilter2D(A);
 	//MatIm(A);
 	//vector of points
 	vector<Point2f> vPoints(20);
-	for (size_t i = 0; i < vPoints.size(); ++i)
+for (size_t i = 0; i < vPoints.size(); ++i)
 		vPoints[i] = Point2f((float)(i * 5), (float)(i % 7));
 	cout << "A vector of 2D Points = " << vPoints << endl << endl;
+
+
+	//Creating a Histogram from image and normalizing it
+	imshow("for Histogram", A);
+
+
+	//separating planes in histogram
+	vector<Mat> planes;
+	split(A, planes);
+
+	
+
+	int histSize = 256;
+	float range[] = {0,256};
+	const float* histRange[] = { range };
+	bool uniform = true;
+	bool accumulate = false;
+	Mat b_hist,g_hist,r_hist;
+	calcHist(&planes[0], 1, 0, Mat(), b_hist, 1, &histSize, histRange, uniform, accumulate);
+	calcHist(&planes[1], 1, 0, Mat(), g_hist, 1, &histSize, histRange, uniform, accumulate);
+	calcHist(&planes[2], 1, 0, Mat(), r_hist, 1, &histSize, histRange, uniform, accumulate);
+
+
+	int h_ww = 512;
+	int h_hh = 400;
+	int bin_w = cvRound((double)h_ww / histSize);
+
+	Mat histImage(h_hh, h_ww, CV_8UC3, Scalar(0, 0, 0));
+
+
+	normalize(b_hist, b_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat());
+	normalize(g_hist, g_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat());
+	normalize(r_hist, r_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat());
+
+	for (int i = 1; i < histSize; i++) {
+		line(histImage, Point(bin_w*(i-1),h_hh - cvRound(b_hist.at<float>(i-1))), Point(bin_w*(i),h_hh-cvRound(b_hist.at<float>(i))), Scalar(255, 0, 0), 2, 8, 0);
+		line(histImage, Point(bin_w * (i - 1), h_hh - cvRound(g_hist.at<float>(i - 1))), Point(bin_w * (i), h_hh - cvRound(g_hist.at<float>(i))), Scalar(0, 255, 0), 2, 8, 0);
+		line(histImage, Point(bin_w * (i - 1), h_hh - cvRound(r_hist.at<float>(i - 1))), Point(bin_w * (i), h_hh - cvRound(r_hist.at<float>(i))), Scalar(0, 0, 255), 2, 8, 0);
+
+	}
+
+	imshow("Histogram is ", histImage);
+	waitKey(0);
+	templateMatching();
+
+	
+
 
 
 	//imshow("row and column",S);

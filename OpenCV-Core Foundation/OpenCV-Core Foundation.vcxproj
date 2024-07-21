@@ -132,14 +132,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BasicOperations.cpp" />
     <ClCompile Include="Itreating-through-Image.cpp" />
     <ClCompile Include="MaskOperationOnMatrix.cpp" />
     <ClCompile Include="OpenCV-Core Foundation.cpp" />
+    <ClCompile Include="TemplateMatching.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Itreating-through-Image.h" />
     <ClInclude Include="MaskOperationOnMatrix.h" />
+    <ClInclude Include="TemplateMatching.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
