@@ -23,6 +23,7 @@ Data Type :
 #include "Itreating-through-Image.h"
 #include "MaskOperationOnMatrix.h"
 #include "TemplateMatching.h"
+#include "Contours.h"
 using namespace std;
 using namespace cv;
 
@@ -159,6 +160,7 @@ for (size_t i = 0; i < vPoints.size(); ++i)
 	imshow("Histogram is ", histImage);
 	waitKey(0);
 	templateMatching();
+	Contours();
 
 	
 
